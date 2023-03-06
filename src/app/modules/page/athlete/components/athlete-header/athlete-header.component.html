@@ -1,1 +1,11 @@
-<p>athlete-header works!</p>
+<div class="main-outer">
+  <div class="main-inner">
+    <div class="left-side">
+      <img src="assets/images/logo.jpg" routerLink="/page" alt="Logo">
+    </div>
+    <div class="right-side">
+      <button class="create-button" [hidden]=" router.url.endsWith('create')" routerLink="/page/athlete/create">Create Athlete</button>
+      <button class="dashboard-button" [hidden]=" router.url.endsWith('dashboard')" routerLink="/page/athlete/dashboard">Dashboard</button>
+    </div>
+  </div>
+</div>

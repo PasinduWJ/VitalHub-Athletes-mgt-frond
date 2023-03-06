@@ -39,31 +39,35 @@
     .sport-name{
       display: flex;
       align-items: center;
+      h1{
+        color: var(--font-dark-color);
+      }
       h5{
         margin-right: 5px;
         margin-top: 50px;
+        color: var(--font-gray-color);
       }
     }
     span{
-      color: darkblue;
+      color: var(--primary-color);
       font-size: larger;
     }
   }
 
   button {
-    background-color: #1b0d5c;
-    color: #fb00ff;
+    background-color: var(--primary-color);
+    color: var(--lite-purpul-color);
     font-size: medium;
     min-width: 120px;
     padding: 8px 24px;
-    border: 2px solid #830a93;
+    border: 2px solid var(--dark-purpul-color);
     border-radius: 8px;
     transition: .3s;
     box-shadow: -25px 10px 24px rgb(172 191 227);
 
     &:hover {
-      color: #eccd05;
-      background-color: #9385e7;
+      color: var(--orange-color);
+      background-color: var(--dark-purpul-color);
       box-shadow: 0px 0px 36px rgba(172, 191, 227, 0.24);
     }
   }
