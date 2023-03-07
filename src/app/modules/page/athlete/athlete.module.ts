@@ -12,6 +12,9 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatSelectModule} from '@angular/material/select';
 import { AthleteDetailsComponent } from './components/dashboard-view/athlete-details/athlete-details.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import {MatIconModule} from "@angular/material/icon";
 @NgModule({
   declarations: [
     AthleteComponent,
@@ -27,7 +30,10 @@ import { AthleteDetailsComponent } from './components/dashboard-view/athlete-det
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatIconModule
   ]
 })
 export class AthleteModule { }

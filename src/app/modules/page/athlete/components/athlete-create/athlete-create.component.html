@@ -1,1 +1,134 @@
-<p>athlete-create works!</p>
+<div class="main-outer">
+
+  <div class="container">
+    <div class="row page-title">
+      <div class="col-12 fw-bold">
+        <h1>Create Athlete</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-7">
+        <form [formGroup]="createAthleteForm" class="example-form">
+          <div class="container athlete-details">
+            <div class="col-12 ">
+              <mat-form-field class="example-full-width" appearance="outline" style="width: 300px;">
+                <mat-label>First Name</mat-label>
+                <input formControlName="firstName" matInput>
+              </mat-form-field>
+            </div>
+            <div class="col-12">
+              <mat-form-field class="full-width" appearance="outline" style="width: 300px;">
+                <mat-label>Last Name</mat-label>
+                <input formControlName="lastName" matInput>
+              </mat-form-field>
+            </div>
+            <div class="col-12">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Gender</mat-label>
+                <mat-select formControlName="gender">
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let gender of genderList" [value]="gender.id">
+                    {{gender.gender}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-12" style="margin-bottom: 15px;">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Date of Birth</mat-label>
+                <input matInput [matDatepicker]="picker" [max]="todayDate">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="col-12">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Country</mat-label>
+                <mat-select formControlName="country">
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let country of countryList" [value]="country.id">
+                    {{country.country}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class="col-12 img-uploader">
+              <label for="input-file-id" class="md-button md-raised md-primary">Upload a Photo</label>
+              <button class="btn btn-secondary" (click)="imageComponent.click()">
+                Profile Photo
+              </button>
+              <input #imageComponent type="file" name="" id="input-file-id"
+                     accept=".jpg, .png, .jpeg, .pdf"
+                     (change)="onSelectImage($event)">
+            </div>
+
+            <div class="col-12 event-attach">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Events</mat-label>
+                <mat-select>
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let event of eventList" [value]="event.id">
+                    {{event.event}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <button class="btn btn-secondary">Attach</button>
+            </div>
+
+            <div class="col-12">
+              <div class="details-wrapper">
+                <table class="table table-hover table-bordered">
+                  <thead style="text-align: center">
+                  <tr>
+                    <th>Event</th>
+                    <th>Remove</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td>500M</td>
+                    <td class="remove-btn">
+                      <button>
+                        <mat-icon aria-hidden="false" aria-label="Example remove icon" fontIcon="close"></mat-icon>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>100m</td>
+                    <td>
+                      <div class="remove-btn">
+                        <button>
+                          <mat-icon aria-hidden="false" aria-label="Example remove icon" fontIcon="close"></mat-icon>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-12 col-md-5">
+        <div class="image-wrapper">
+          <div class="image-outer">
+            <div class="remove-btn">
+              <button (click)="removePhoto()">
+                <mat-icon aria-hidden="false" aria-label="Example remove icon" fontIcon="close"></mat-icon>
+              </button>
+            </div>
+            <img *ngIf="viewImage" src="{{viewImage}}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col save-btn">
+        <button class="btn btn-success">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
