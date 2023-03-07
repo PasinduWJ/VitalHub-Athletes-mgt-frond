@@ -4,6 +4,7 @@
   --primary-color: #1B1464;
   --orange-color: #e67e22;
   --gren-color: #009432;
+  --lite-gray-color: #f1f2f6;
   --lite-blue-color: #0652DD;
   --dark-purpul-color: #6F1E51;
   --lite-purpul-color: #D980FA;
@@ -20,3 +21,6 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

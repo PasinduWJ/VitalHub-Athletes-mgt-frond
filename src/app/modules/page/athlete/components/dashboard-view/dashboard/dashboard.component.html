@@ -1,0 +1,87 @@
+<div class="main-outer" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+  <div class="main-inner-top">
+    <div class="container inner-background">
+      <div class="row search-area">
+        <div class="col-12 col-md-6">
+          <h1 class="fw-bold">Search Athlete</h1>
+        </div>
+        <div class="col-12 col-md-6 search-option">
+          <button class="btn btn-primary">Search</button>
+          <button class="btn btn-warning">Clear</button>
+          <button class="btn btn-success">New</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <form [formGroup]="searchForm" class="example-form">
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <mat-form-field class="example-full-width" appearance="outline" style="width: 100%;">
+                  <mat-label>Athlete Name</mat-label>
+                  <input formControlName="name" matInput>
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-6">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Gender</mat-label>
+                  <mat-select formControlName="gender">
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let gender of genderList" [value]="gender.id">
+                      {{gender.gender}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Country</mat-label>
+                  <mat-select formControlName="country">
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let country of countryList" [value]="country.id">
+                      {{country.country}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>Events</mat-label>
+                  <mat-select formControlName="event">
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let event of eventList" [value]="event.id">
+                      {{event.event}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="main-inner-bottom">
+    <div class="container">
+      <div class="row all-athlete-details">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+          <app-athlete-details></app-athlete-details>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+          <app-athlete-details></app-athlete-details>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+          <app-athlete-details></app-athlete-details>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+          <app-athlete-details></app-athlete-details>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+          <app-athlete-details></app-athlete-details>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
