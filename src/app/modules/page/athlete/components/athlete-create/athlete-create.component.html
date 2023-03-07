@@ -36,10 +36,11 @@
             <div class="col-12" style="margin-bottom: 15px;">
               <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Date of Birth</mat-label>
-                <input matInput [matDatepicker]="picker" [max]="todayDate">
+                <input matInput formControlName="dob" [matDatepicker]="picker" [max]="todayDate"
+                       (dateChange)="dobValidate()">
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
+                <mat-datepicker #picker ></mat-datepicker>
               </mat-form-field>
             </div>
             <div class="col-12">
@@ -61,20 +62,20 @@
               </button>
               <input #imageComponent type="file" name="" id="input-file-id"
                      accept=".jpg, .png, .jpeg, .pdf"
-                     (change)="onSelectImage($event)">
+                     (change)="onSelectImage($event)" (click)="clearImagesOnClick($event)">
             </div>
 
             <div class="col-12 event-attach">
               <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Events</mat-label>
-                <mat-select>
+                <mat-select #eventSelectControler>
                   <mat-option>--</mat-option>
-                  <mat-option *ngFor="let event of eventList" [value]="event.id">
+                  <mat-option *ngFor="let event of nonSelectedEventList" [value]="event.id">
                     {{event.event}}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
-              <button class="btn btn-secondary">Attach</button>
+              <button class="btn btn-secondary" (click)="attachEvents(eventSelectControler.value)">Attach</button>
             </div>
 
             <div class="col-12">
@@ -87,24 +88,24 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td>500M</td>
+                  <tr *ngFor="let event of selectedEventsList">
+                    <td>{{event.event}}</td>
                     <td class="remove-btn">
-                      <button>
+                      <button (click)="removeEvent(event.id)">
                         <mat-icon aria-hidden="false" aria-label="Example remove icon" fontIcon="close"></mat-icon>
                       </button>
                     </td>
                   </tr>
-                  <tr>
-                    <td>100m</td>
-                    <td>
-                      <div class="remove-btn">
-                        <button>
-                          <mat-icon aria-hidden="false" aria-label="Example remove icon" fontIcon="close"></mat-icon>
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
+<!--                  <tr>-->
+<!--                    <td>100m</td>-->
+<!--                    <td>-->
+<!--                      <div class="remove-btn">-->
+<!--                        <button>-->
+<!--                          <mat-icon aria-hidden="false" aria-label="Example remove icon" fontIcon="close"></mat-icon>-->
+<!--                        </button>-->
+<!--                      </div>-->
+<!--                    </td>-->
+<!--                  </tr>-->
                   </tbody>
                 </table>
               </div>
