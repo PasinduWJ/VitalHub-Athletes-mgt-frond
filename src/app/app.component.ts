@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {LoadingService} from "./modules/share/core/loading-page/loading.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'AthletesManagement';
+
+  constructor(public loadingService: LoadingService) {
+  }
 }

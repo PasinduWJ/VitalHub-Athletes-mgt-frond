@@ -4,7 +4,7 @@ import {PageComponent} from './page.component';
 
 const routes: Routes = [
   {path: '', component: PageComponent},
-  { path: 'athlete', loadChildren: () => import('./athlete/athlete.module').then(m => m.AthleteModule) }
+  {path: 'athlete', loadChildren: () => import('./athlete/athlete.module').then(m => m.AthleteModule)}
 ];
 
 @NgModule({

@@ -1,4 +1,4 @@
-.data-wrapper-outer{
+.data-wrapper-outer {
   width: 100%;
   margin: 5px;
   padding: 5px;
@@ -24,13 +24,15 @@
     border-radius: 10px;
   }
 }
-.details-wrapper{
+
+.details-wrapper {
   padding: 0 15px;
 }
 
-.athlete-details{
-display: flex;
-  h3,h4{
+.athlete-details {
+  display: flex;
+
+  h3, h4 {
     margin-bottom: 0;
   }
 }

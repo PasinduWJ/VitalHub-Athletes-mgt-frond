@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { PageRoutingModule } from './page-routing.module';
-import { PageComponent } from './page.component';
-import { LandingPageComponent } from './landing-page/landing-page.component';
+import {PageRoutingModule} from './page-routing.module';
+import {PageComponent} from './page.component';
+import {LandingPageComponent} from './landing-page/landing-page.component';
 
 
 @NgModule({
@@ -16,4 +16,5 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     PageRoutingModule
   ]
 })
-export class PageModule { }
+export class PageModule {
+}

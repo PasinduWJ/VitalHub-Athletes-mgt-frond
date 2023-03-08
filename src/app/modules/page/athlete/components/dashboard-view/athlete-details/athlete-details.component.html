@@ -2,17 +2,17 @@
   <div class="img-wrapper">
     <div class="shadow"></div>
     <img
-      src="assets/images/profile-image.jpg"
-      alt="" product-image>
+      [src]="viewImage"
+      alt="" athlete-image>
   </div>
   <hr>
   <div class="details-wrapper" style="margin-bottom: 0">
-    <div class="athlete-details" >
+    <div class="athlete-details">
       <div class="col-4">
         <h3 class="fw-bold">Name</h3>
       </div>
       <div class="col-8">
-        <h4>Jone Wike</h4>
+        <h4>{{athleteDetail.firstName}} {{athleteDetail.lastName}}</h4>
       </div>
     </div>
     <div class="athlete-details">
@@ -20,7 +20,7 @@
         <h3 class="fw-bold">Age</h3>
       </div>
       <div class="col-8">
-        <h4>23</h4>
+        <h4>{{athleteDetail.birthyear}} Y</h4>
       </div>
     </div>
     <div class="athlete-details">
@@ -28,7 +28,7 @@
         <h3 class="fw-bold">Country</h3>
       </div>
       <div class="col-8">
-        <h4>UK</h4>
+        <h4>{{athleteDetail.country}}</h4>
       </div>
     </div>
   </div>
@@ -42,13 +42,9 @@
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td>500M</td>
-        <td>1st place</td>
-      </tr>
-      <tr>
-        <td>100m</td>
-        <td>2nd place</td>
+      <tr *ngFor="let event of athleteDetail.eventList">
+        <td>{{event.eventId}}</td>
+        <td>{{event.result}}</td>
       </tr>
       </tbody>
     </table>

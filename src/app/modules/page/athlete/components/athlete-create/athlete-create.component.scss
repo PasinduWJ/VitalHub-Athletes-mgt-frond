@@ -28,15 +28,17 @@
     width: 253px;
     height: 279px;
     border: 1px solid #34495e;
+
     .remove-btn {
       position: absolute;
       margin-left: 215px;
       margin-top: -6px;
       padding: 5px;
       z-index: 1000;
+
       button {
         border: none;
-        background:none;
+        background: none;
         color: red;
       }
     }
@@ -93,9 +95,10 @@
   .remove-btn {
     display: flex;
     justify-content: center;
+
     button {
       border: none;
-      background:none;
+      background: none;
       color: var(--orange-color);
     }
   }

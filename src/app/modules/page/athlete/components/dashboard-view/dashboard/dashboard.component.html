@@ -1,4 +1,4 @@
-<div class="main-outer" >
+<div class="main-outer">
   <div class="main-inner-top">
     <div class="container inner-background">
       <div class="row search-area">
@@ -6,9 +6,9 @@
           <h1 class="fw-bold">Search Athlete</h1>
         </div>
         <div class="col-12 col-md-6 search-option">
-          <button class="btn btn-primary">Search</button>
-          <button class="btn btn-warning">Clear</button>
-          <button class="btn btn-success">New</button>
+          <button class="btn btn-primary" (click)="searchAthlete()">Search</button>
+          <button class="btn btn-warning" (click)="clearSearch()">Clear</button>
+          <button class="btn btn-success" routerLink="/page/athlete/create">New</button>
         </div>
       </div>
 
@@ -66,20 +66,8 @@
   <div class="main-inner-bottom">
     <div class="container">
       <div class="row all-athlete-details">
-        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
-          <app-athlete-details></app-athlete-details>
-        </div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
-          <app-athlete-details></app-athlete-details>
-        </div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
-          <app-athlete-details></app-athlete-details>
-        </div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
-          <app-athlete-details></app-athlete-details>
-        </div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
-          <app-athlete-details></app-athlete-details>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-4" *ngFor="let athlete of athleteDetails">
+          <app-athlete-details [athleteDetail]="athlete"></app-athlete-details>
         </div>
       </div>
     </div>
