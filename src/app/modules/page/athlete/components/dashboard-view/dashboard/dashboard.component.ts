@@ -8,6 +8,8 @@ import {AthleteService} from "../../../../../share/service/athlete.service";
 import AthleteResponseDto from "../../../../../share/dto/response/AthleteResponseDto";
 import {SnackBarService} from "../../../../../share/core/snack-bar/snack-bar.service";
 import {AthleteAllResponse} from "../../../../../share/dto/response/AthleteAllResponse";
+import {CommonResponse} from "../../../../../share/dto/response/CommonResponse";
+import CommonPageDataResponseDto from "../../../../../share/dto/response/CommonPageDataResponseDto";
 
 @Component({
   selector: 'app-dashboard',
@@ -18,22 +20,9 @@ export class DashboardComponent implements OnInit {
 
   public athleteDetails: AthleteView[] = [];
 
-  genderList: GenderDto[] = [
-    {id: '1', gender: 'm'},
-    {id: '2', gender: 'f'},
-  ];
-
-  countryList: CountryDto[] = [
-    {id: '1', country: 'SL'},
-    {id: '2', country: 'UK'},
-    {id: '3', country: 'AS'},
-  ];
-  eventList: EventDto[] = [
-    {id: '1', event: '100m'},
-    {id: '2', event: '200m'},
-    {id: '3', event: '400m'},
-  ];
-
+  genderList: GenderDto[] = [];
+  countryList: CountryDto[] = [];
+  eventList: EventDto[] = [];
 
   constructor(private athleteService: AthleteService,
               private snackbarService: SnackBarService) {
@@ -46,32 +35,27 @@ export class DashboardComponent implements OnInit {
     event: new FormControl(''),
   });
 
-  ngOnInit(): void {
-    this.loadAthletes();
-
-  }
-
-  loadAthletes() {
-    this.athleteService.getAllAthlete().subscribe(res => {
-      let response: AthleteAllResponse = res as AthleteAllResponse;
-      if (response.code === 200) {
-        let responseData: AthleteResponseDto[] = response.content;
-        this.populateAthletes(responseData);
+  ngOnInit() {
+    this.athleteService.getAllCommonData().subscribe(res => {
+      let responce: CommonResponse<CommonPageDataResponseDto> = res as CommonResponse<CommonPageDataResponseDto>;
+      if (responce.code === 200) {
+        this.commonDataSet(responce.content);
+        this.searchAthlete();
       } else {
-        this.snackbarService.showSnackbar(response.message, 'Close');
+        this.snackbarService.showSnackbar(responce.message, 'Close');
       }
     }, error => {
       this.snackbarService.showSnackbar('Something went wrong', 'Close');
     });
   }
 
+  commonDataSet(loadData: CommonPageDataResponseDto) {
+    loadData.country.forEach(value => this.countryList.push(new CountryDto(value.id, value.country)));
+    loadData.gender.forEach(value => this.genderList.push(new GenderDto(value.id, value.gender)));
+    loadData.event.forEach(value => this.eventList.push(new EventDto(value.id, value.event)));
+  }
+
   searchAthlete() {
-    let name = '';
-    let country = '';
-    let gender = '';
-    let event = '';
-
-
     this.athleteService.getSearchAthlete(
       this.searchForm.get('name')?.value! ?? '',
       this.searchForm.get('country')?.value! ?? '',
@@ -83,8 +67,8 @@ export class DashboardComponent implements OnInit {
         let responseData: AthleteResponseDto[] = response.content;
         this.populateAthletes(responseData);
       } else {
-        if(response.code === 404){
-          this.athleteDetails=[];
+        if (response.code === 404) {
+          this.athleteDetails = [];
         }
         this.snackbarService.showSnackbar(response.message, 'Close');
       }
@@ -93,9 +77,8 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-
   populateAthletes(responseData: AthleteResponseDto[]) {
-    this.athleteDetails=[];
+    this.athleteDetails = [];
     responseData.forEach(value => {
       let athlete: AthleteView = new AthleteView();
       athlete.firstName = value.firstName;
@@ -114,9 +97,9 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-
   clearSearch() {
     this.searchForm.reset();
-    this.loadAthletes();
+    this.searchAthlete();
   }
+
 }

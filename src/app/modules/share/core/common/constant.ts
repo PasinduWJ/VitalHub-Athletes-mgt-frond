@@ -9,6 +9,5 @@ export const getEndPoint = (uri: string) => {
 
 export const POST_ATHLETE_CREATE = 'athlete/create';
 
-export const GET_ALL_ATHLETE = 'athlete/findAll';
 export const GET_SEARCH_ATHLETE = 'athlete/search';
 export const GET_COMMON_ATHLETE_PAGE_DATA = 'common/getall';

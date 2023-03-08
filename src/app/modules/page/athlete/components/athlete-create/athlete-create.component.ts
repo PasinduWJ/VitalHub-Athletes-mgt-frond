@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {SnackBarService} from "../../../../share/core/snack-bar/snack-bar.service";
 import EventDto from "../../../../share/dto/EventDto";
 import GenderDto from "../../../../share/dto/GenderDto";
@@ -8,7 +7,8 @@ import AthleteDto from "../../../../share/dto/AthleteDto";
 import ImageDto from "../../../../share/dto/ImageDto";
 import {AthleteService} from "../../../../share/service/athlete.service";
 import {CommonResponse} from "../../../../share/dto/response/CommonResponse";
-import AthleteResponseDto from "../../../../share/dto/response/CommonPageDataResponseDto";
+import CommonPageDataResponseDto from "../../../../share/dto/response/CommonPageDataResponseDto";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-athlete-create',
@@ -28,20 +28,8 @@ export class AthleteCreateComponent implements OnInit {
   todayDate: Date = new Date();
 
   genderList: GenderDto[] = [];
-  //   {id: '1', gender: 'm'},
-  //   {id: '2', gender: 'f'},
-  // ];
-
   countryList: CountryDto[] = [];
-  //   {id: '1', country: 'SL'},
-  //   {id: '2', country: 'UK'},
-  //   {id: '3', country: 'AS'},
-  // ];
   eventList: EventDto[] = [];
-  //   {id: '1', event: '100m'},
-  //   {id: '2', event: '200m'},
-  //   {id: '3', event: '400m'},
-  // ];
 
   constructor(
     private snackbarService: SnackBarService,
@@ -58,9 +46,9 @@ export class AthleteCreateComponent implements OnInit {
     country: new FormControl("", [Validators.required]),
   });
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.athleteService.getAllCommonData().subscribe(res => {
-      let responce: CommonResponse<AthleteResponseDto> = res as CommonResponse<AthleteResponseDto>;
+      let responce: CommonResponse<CommonPageDataResponseDto> = res as CommonResponse<CommonPageDataResponseDto>;
       if (responce.code === 200) {
         this.commonDataSet(responce.content);
       } else {
@@ -71,10 +59,10 @@ export class AthleteCreateComponent implements OnInit {
     });
   }
 
-  commonDataSet(loadData:AthleteResponseDto){
-    loadData.country.forEach(value => this.countryList.push(value));
-    loadData.gender.forEach(value => this.genderList.push(value));
-    loadData.event.forEach(value => this.eventList.push(value));
+  commonDataSet(loadData:CommonPageDataResponseDto){
+    loadData.country.forEach(value => this.countryList.push(new CountryDto(value.id, value.country)));
+    loadData.gender.forEach(value => this.genderList.push(new GenderDto(value.id, value.gender)));
+    loadData.event.forEach(value => this.eventList.push(new EventDto(value.id, value.event)));
 
     this.eventList.forEach(item => {
       this.nonSelectedEventList.push(item);
