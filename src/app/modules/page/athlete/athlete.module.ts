@@ -24,18 +24,18 @@ import {MatIconModule} from "@angular/material/icon";
     AthleteCreateComponent,
     AthleteDetailsComponent,
   ],
-    imports: [
-        CommonModule,
-        AthleteRoutingModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatButtonModule,
-        MatSelectModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatIconModule
-    ]
+  imports: [
+    CommonModule,
+    AthleteRoutingModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatIconModule
+  ]
 })
 export class AthleteModule {
 }

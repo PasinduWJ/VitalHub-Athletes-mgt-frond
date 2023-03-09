@@ -86,7 +86,9 @@ export class DashboardComponent implements OnInit {
       athlete.country = this.countryList.filter(val => val.id == value.countryId)[0].country;
       athlete.gender = this.genderList.filter(val => val.id == value.genderId)[0].gender;
       athlete.birthyear = (new Date().getFullYear() - new Date(value.dob).getFullYear()).toString();
-      athlete.image = 'data:image/jpeg;base64,' + value.profileImage.imageData;
+      if (value.profileImage.imageData != null && value.profileImage.imageData != '') {
+        athlete.image = 'data:image/jpeg;base64,' + value.profileImage.imageData;
+      }
       value.athleteEvents.forEach(val => {
         let event = this.eventList.filter(item => item.id == val.eventId)[0].event;
         let result = (val.result != null && val.result != '') ? val.result : '';

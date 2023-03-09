@@ -4,9 +4,9 @@ import EventDto from "../EventDto";
 
 export default class CommonPageDataResponseDto {
   constructor(
-    public country:CountryDto[],
-    public gender:GenderDto[],
-    public event:EventDto[],
+    public country: CountryDto[],
+    public gender: GenderDto[],
+    public event: EventDto[],
   ) {
   }
 }

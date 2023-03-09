@@ -59,7 +59,7 @@ export class AthleteCreateComponent implements OnInit {
     });
   }
 
-  commonDataSet(loadData:CommonPageDataResponseDto){
+  commonDataSet(loadData: CommonPageDataResponseDto) {
     loadData.country.forEach(value => this.countryList.push(new CountryDto(value.id, value.country)));
     loadData.gender.forEach(value => this.genderList.push(new GenderDto(value.id, value.gender)));
     loadData.event.forEach(value => this.eventList.push(new EventDto(value.id, value.event)));

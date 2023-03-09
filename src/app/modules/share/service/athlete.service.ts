@@ -32,13 +32,13 @@ export class AthleteService {
     return this.http.get(this.get_common_athlete_pge_data_url);
   }
 
-  public getSearchAthlete(name:string , country:string, gender:string, event:string): Observable<any> {
+  public getSearchAthlete(name: string, country: string, gender: string, event: string): Observable<any> {
     let params = new HttpParams();
     params = params.append('name', name);
     params = params.append('country', country);
     params = params.append('gender', gender);
     params = params.append('event', event);
-    return this.http.get(this.get_search_athlete_url, {params:params});
+    return this.http.get(this.get_search_athlete_url, {params: params});
   }
 
 }

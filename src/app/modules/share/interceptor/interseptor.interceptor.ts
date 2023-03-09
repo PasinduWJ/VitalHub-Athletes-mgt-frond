@@ -13,9 +13,9 @@ export class InterseptorInterceptor implements HttpInterceptor {
     this.loadingService.loadingState.next(true);
     return next.handle(request).pipe(
       finalize(() => {
-        setTimeout(()=>{
+        setTimeout(() => {
           this.loadingService.loadingState.next(false);
-        },300)
+        }, 300)
       })
     );
   }
