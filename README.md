@@ -1,11 +1,23 @@
-# AthletesManagement
+# VitalHub-Athletes-mgt- Front-end
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.3.
+This project was developed to manage event and result Athletes of world athletic event.
+This application was developed by front-end and backend separately.
+This is the front-end part of the VitalHub-Athletes-mgt application.
+Main git repository branch is development branch.
+
+----------------clone project backend----------
+git clone https://github.com/PasinduWJ/VitalHub-Athletes-mgt-api/tree/development
+
+----------------clone project frontend----------
+git clone https://github.com/PasinduWJ/VitalHub-Athletes-mgt-frond/tree/development
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you
 change any of the source files.
+
+All the rest call will communicate with VitalHub-Athletes-mgt-api API module.
+This project was generated with Angular CLI version Angular CLI: 15.1.6 and Node: 16.15.1
 
 ## Code scaffolding
 
